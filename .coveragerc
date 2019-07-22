@@ -1,0 +1,6 @@
+[run]
+branch = True
+source = freecell_solver
+
+[report]
+ignore_errors = True
