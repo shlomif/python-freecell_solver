@@ -99,7 +99,6 @@ void freecell_solver_user_recycle(void *api_instance);
 
     def __del__(self):
         self.lib.freecell_solver_user_free(self.user)
-        print("free()")
 
     def solve_board(self, board):
         return self.lib.freecell_solver_user_solve_board(
