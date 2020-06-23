@@ -28,7 +28,6 @@ class FreecellSolver(object):
             if not self.lib:
                 self.ffi = None
                 raise ImportError("Could not find shared library")
-            print("fcs.so")
             self.ffi.cdef('''
 void * freecell_solver_user_alloc();
 typedef  struct{ char s[20];}fcs_move_t;
