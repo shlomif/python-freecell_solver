@@ -16,6 +16,7 @@ class FreecellSolver(object):
     FCS_STATE_SUSPEND_PROCESS = 5
 
     def __init__(self, ffi=None, lib=None):
+        self.user = None
         if ffi:
             self.ffi = ffi
             self.lib = lib
@@ -23,7 +24,11 @@ class FreecellSolver(object):
             self.ffi = FFI()
             self.lib = self.ffi.dlopen(
                 "libfreecell-solver." + (
-                    "dll" if (platform.system() == 'Windows') else "so"))
+                    "dll" if (platform.system() == 'Windows') else "so.0"))
+            if not self.lib:
+                self.ffi = None
+                raise ImportError("Could not find shared library")
+            print("fcs.so")
             self.ffi.cdef('''
 void * freecell_solver_user_alloc();
 typedef  struct{ char s[20];}fcs_move_t;
@@ -98,7 +103,9 @@ void freecell_solver_user_recycle(void *api_instance);
                 'cmd_line_args_len': len(cmd_line_args)}
 
     def __del__(self):
-        self.lib.freecell_solver_user_free(self.user)
+        if self.user:
+            self.lib.freecell_solver_user_free(self.user)
+            self.user = None
 
     def solve_board(self, board):
         return self.lib.freecell_solver_user_solve_board(
