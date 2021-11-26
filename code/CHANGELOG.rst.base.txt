@@ -1,0 +1,2 @@
+0.4.0
+    Convert to https://pypi.org/project/pydistman/ .
