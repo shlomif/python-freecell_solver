@@ -1,2 +1,6 @@
+0.6.0
+    Merge more functionality into the https://pypi.org/project/pydistman/
+    upstream.
+
 0.4.0
     Convert to https://pypi.org/project/pydistman/ .

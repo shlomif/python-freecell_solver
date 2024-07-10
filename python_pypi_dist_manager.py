@@ -18,10 +18,10 @@ dist_name = "freecell_solver"
 
 obj = Derived(
     dist_name=dist_name,
-    dist_version="0.4.0",
+    dist_version="0.6.0",
     project_name=dist_name,
     project_short_description="Freecell Solver bindings",
-    release_date="2021-11-26",
+    release_date="2024-07-10",
     project_year="2020",
     aur_email="shlomif@cpan.org",
     project_email="shlomif@cpan.org",
